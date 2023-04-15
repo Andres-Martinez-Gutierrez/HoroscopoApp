@@ -12,7 +12,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CompatibilityFragment : Fragment() {
     //Inyectar ViewModel
-    private val viewModel by viewModels<CompatibilityViewModel>()
+    private  val viewModel by viewModels<CompatibilityViewModel>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
