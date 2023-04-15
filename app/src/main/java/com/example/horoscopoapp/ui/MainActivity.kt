@@ -8,8 +8,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.horoscopoapp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
 
+class MainActivity : AppCompatActivity() {
 
     private lateinit var  navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
