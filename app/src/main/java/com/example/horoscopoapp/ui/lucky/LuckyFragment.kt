@@ -18,6 +18,7 @@ import androidx.fragment.app.viewModels
 import com.example.horoscopoapp.R
 import com.example.horoscopoapp.databinding.FragmentLuckyBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlin.random.Random
 
 @AndroidEntryPoint
@@ -25,8 +26,14 @@ class LuckyFragment : Fragment() {
     //Inyectar ViewModel
     private val viewModel by viewModels<LuckyViewModel>()
 
+    //injectar el objeto Random
+    @Inject
+    lateinit var randomCardsProvider: RandomCardsProvider
+
     private var _binding: FragmentLuckyBinding? = null
     private val binding get() = _binding!!
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -82,21 +89,14 @@ class LuckyFragment : Fragment() {
     }
 
     private fun prepareCard() {
-        val image = when (Random.nextInt(0, 5)) {
-            0 -> R.drawable.card_moon
-            1 -> R.drawable.card_fool
-            2 -> R.drawable.card_hermit
-            3 -> R.drawable.card_star
-            4 -> R.drawable.card_sword
-            5 -> R.drawable.card_sun
-            else -> R.drawable.card_reverse
-        }
+     var lucky = randomCardsProvider.getLucky()
         binding.viewFrontContainer.imLuckyFront.setImageDrawable(
             ContextCompat.getDrawable(
                 requireContext(),
-                image
+                lucky.image
             )
         )
+        binding.tvLuckyInfo.text = getString(lucky.text)
     }
 
 
