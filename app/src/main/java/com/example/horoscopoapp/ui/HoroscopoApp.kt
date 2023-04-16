@@ -1,4 +1,8 @@
 package com.example.horoscopoapp.ui
 
-class HoroscopoApp {
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class HoroscopoApp: Application() {
 }
