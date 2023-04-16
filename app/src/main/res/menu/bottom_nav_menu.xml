@@ -6,9 +6,9 @@
         android:title=".Listado"/>
 
     <item
-        android:id="@+id/compatibilityFragment"
+        android:id="@+id/luckyFragment"
         android:icon="@drawable/ic_compatibility"
-        android:title=".Compatibilidad"/>
+        android:title=".Suerte"/>
 
     <item
         android:id="@+id/informationFragment"
