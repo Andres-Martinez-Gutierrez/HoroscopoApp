@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/informationFragment"
         android:name="com.example.horoscopoapp.ui.information.InformationFragment"
-        android:label="fragment_infromation"
-        tools:layout="@layout/fragment_infromation" />
+        android:label="fragment_information"
+        tools:layout="@layout/fragment_information" />
 
 </navigation>

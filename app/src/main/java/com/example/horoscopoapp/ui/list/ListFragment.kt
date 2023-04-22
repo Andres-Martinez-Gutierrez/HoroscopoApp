@@ -1,5 +1,6 @@
 package com.example.horoscopoapp.ui.list
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.horoscopoapp.R
 import com.example.horoscopoapp.databinding.FragmentListBinding
-import com.example.horoscopoapp.databinding.FragmentLuckyBinding
+import com.example.horoscopoapp.ui.details.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,16 +24,24 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btnCapricornio.setOnClickListener {
             //Ir A detalle
+            openDetails()
         }
 
         binding.btnSagitario.setOnClickListener {
             //Ir A detalle
+            openDetails()
+
         }
 
         binding.btnCancer.setOnClickListener {
             //Ir A detalle
+            openDetails()
         }
 
+    }
+
+    private fun openDetails() {
+        startActivity(DetailActivity.create(requireContext()))
     }
 
 
@@ -40,7 +49,8 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        _binding = FragmentListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 }
