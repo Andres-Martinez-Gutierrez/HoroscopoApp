@@ -10,11 +10,9 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.horoscopoapp.R
 import com.example.horoscopoapp.databinding.ActivityDetailBinding
 import com.example.horoscopoapp.ui.details.model.DetailsUIState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -40,8 +38,8 @@ class DetailActivity : AppCompatActivity() {
     private fun initUI() {
         lifecycleScope.launch{
             repeatOnLifecycle(Lifecycle.State.STARTED){
-                viewModel.iuState.collect{
-                    when(it){
+                viewModel.uiState.collect{ uiState->
+                    when(uiState){
                         is DetailsUIState.Error -> {
                             //Mostrar Dialogo
                             binding.progressBar.isVisible = false
@@ -53,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
                         is DetailsUIState.Success -> {
                             //Mostrar la Información
                             binding.progressBar.isVisible = false
-                            Toast.makeText(this@DetailActivity,"Esto ha funcionado",Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@DetailActivity,uiState.horoscopeModel.horoscope,Toast.LENGTH_LONG).show()
                         }
                     }
                 }
